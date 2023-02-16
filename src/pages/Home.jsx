@@ -46,7 +46,7 @@ const Home = () => {
     }
 
     return (<div className="flex flex-col gap-2 justify-center items-center mt-5">
-        <p className="text-base text-green-600">{moment().format('DD MMM YYYY')}, Legs day</p>
+        <p className="text-base text-green-600">{moment().format('DD MMM YYYY')}</p>
         <h1 className="text-2xl font-bold">Welcome, {user?.fullname}</h1>
         {/* temp */}
         <div className='flex flex-col w-full px-2 md:w-[500px] gap-2 mt-5'>
@@ -54,6 +54,11 @@ const Home = () => {
             <div className='flex flex-row gap-4'>
                 <Button text="See Report" type='outline' onClick={() => history.push('/app/report')} />
                 <Button text="Enter Exercise" />
+                <Button text="Logout" onClick={()=>{
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token');
+                    history.push('/auth/login');
+                }}/>
             </div>
         </div>
         <div className='flex flex-col w-full px-2 md:w-[500px] gap-2 mt-5'>
