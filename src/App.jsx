@@ -3,6 +3,8 @@ import React from 'react'
 import ProtectedRoute from './routes/ProtectedRoute'
 import ForwardRoute from './routes/ForwardRoute'
 
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 import Landing from './pages/Landing';
 import Layout from './routes/containers/Layout'
@@ -12,12 +14,15 @@ import './css/App.css'
 function App() {
 
   return (
-    <Switch>
-      <ForwardRoute path="/auth" component={Auth} />
-      <ProtectedRoute path="/app" component={Layout} />
-      <Route exact path="/" component={Landing} />
-      <Redirect from="*" to="/" />
-    </Switch>
+    <div>
+      <ToastContainer />
+      <Switch>
+        <ForwardRoute path="/auth" component={Auth} />
+        <ProtectedRoute path="/app" component={Layout} />
+        <Route exact path="/" component={Landing} />
+        <Redirect from="*" to="/" />
+      </Switch>
+    </div>
   )
 }
 
