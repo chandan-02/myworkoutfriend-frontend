@@ -18,7 +18,7 @@ function CreateAccount() {
       delete userData.confirmpassword;
       Register(userData).then(res => {
         setLoading(false)
-        history.push('/app/home');
+        history.push('/auth/login');
       }).catch(err => {
         setLoading(false)
       })
