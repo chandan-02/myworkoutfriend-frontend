@@ -41,10 +41,10 @@ function CreateAccount() {
         <Input name="confirmpassword" setInput={setUserData} label="Confirm Password" placeholder={"*********"} />
         <Input name="height" setInput={setUserData} label="Height - Optional" placeholder={"5.7"} />
         <Input name="weight" setInput={setUserData} label="Weight - Optional" placeholder={"55"} />
-        <p className='text-base cursor-pointer text-green-600 text-left'>By creating an account you are agreeing to our terms & conditions.</p>
+        <p className='text-base cursor-pointer text-orange-500 text-left'>By creating an account you are agreeing to our terms & conditions.</p>
         <Button text={!loading ? 'Register' : "Please wait"} onClick={handleRegister} />
         <Link to='/auth/login'>
-          <p className='text-base cursor-pointer text-center text-green-600 hover:underline'>Already an account? Sign in.</p>
+          <p className='text-base cursor-pointer text-center text-orange-500 hover:underline'>Already an account? Sign in.</p>
         </Link>
       </div>
     </div>

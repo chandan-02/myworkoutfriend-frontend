@@ -6,7 +6,7 @@ const Elements = ({ text, onClick }) => {
     </li>)
 }
 
-const Dropdown = ({ data, setInput, default1 }) => {
+const Dropdown = ({ data, setInput, default1, input }) => {
     const [open, setOpen] = useState(false);
     const [select, setSelect] = useState(default1)
     return (
@@ -29,7 +29,7 @@ const Dropdown = ({ data, setInput, default1 }) => {
                                 setSelect(itm?.name)
                                 setInput(prev => {
                                     return {
-                                        ...prev, exerciseid: itm?._id, categoryid: itm?.categoryid
+                                        ...prev, [input]: itm?._id
                                     }
                                 })
                             }} />)}
