@@ -1,12 +1,12 @@
 import moment from "moment/moment";
-
+import { ExclamationCircleIcon } from '@heroicons/react/24/solid'
 const Table = ({ heading, data }) => {
     return (
         <div className="overflow-x-auto gap-4 flex flex-col">
             {
                 data?.length > 0 ? data?.map(itm => {
                     return (
-                        <div className="border-2 border-gray-200 bg-gray-50 py-4 px-6 rounded shadow-md md:w-[800px]">
+                        <div className="border-2 border-gray-200 bg-gray-50 py-4 px-6 rounded shadow-md md:w-[800px] w-full">
                             <div className="flex justify-between py-2 pb-4">
                                 <h1 className="font-bold md:text-xl flex flex-col"><span className="text-xs font-normal text-orange-500">Exercise</span> {itm?.exerciseid?.name} </h1>
                                 <h1 className="font-bold md:text-xl flex flex-col"> <span className="text-xs font-normal text-orange-500">Category</span>{itm?.categoryid?.name} </h1>
@@ -48,7 +48,7 @@ const Table = ({ heading, data }) => {
                             </table>
                         </div>
                     )
-                }) : "Loading..."
+                }) : <div><ExclamationCircleIcon className="text-orange-500"/><p className="text-base">No Data Found</p></div>
             }
 
         </div>
