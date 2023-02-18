@@ -109,8 +109,48 @@ const getAllUserExercise = async (query) => {
         })
     })
 };
+
+const DeleteASet = async (data) => {
+    return new Promise(function (resolve, reject) {
+        Axios.put(`/admin/user-exercise/del`, data).then((res) => {
+            Toast({
+                message: 'Set Deleted!',
+                type: 'success'
+            });
+            if (!res.data.success) {
+                Toast({
+                    message: res.data.message,
+                    type: 'error'
+                });
+                reject({
+                    data: res.data,
+                    other: res,
+                    success: false
+                });
+            };
+            resolve({
+                data: res.data,
+                other: res,
+                success: true
+            });
+        }).catch((err) => {
+            if (err.response?.data) {
+                Toast({
+                    message: `Error from Get all user exercise` ?? err.response.data.message,
+                    type: 'error'
+                });
+            };
+            reject({
+                data: err.response?.data,
+                other: err,
+                success: false
+            });
+        })
+    })
+};
 export {
     getAllExercise,
     saveExercise,
-    getAllUserExercise
+    getAllUserExercise,
+    DeleteASet
 }
