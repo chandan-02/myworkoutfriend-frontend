@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { getAllExercise, saveExercise } from '../api/exercise';
 import { getAllUserCategory } from '../api/categories';
 import { useHistory } from 'react-router-dom';
+import { convertWeight } from '../utils/weightConverter';
 
 const Home = () => {
     const history = useHistory();
@@ -18,6 +19,7 @@ const Home = () => {
     const [allExercise, setAllExercise] = useState([{ name: 'loading...' }]);
     const [allCategory, setAllCategory] = useState([{ name: 'Loading...' }])
     const [loading, setLoading] = useState(false)
+    const [weightInKg, setWeightInKg] = useState('');
 
     const getCategory = () => {
         getAllUserCategory('').then(res => {
@@ -40,6 +42,10 @@ const Home = () => {
         getCategory();
     }, [])
 
+    useEffect(() => {
+        setWeightInKg(convertWeight(exercise.weight, 'kg'));
+    }, [exercise.weight])
+
     const onSave = () => {
         setLoading(true)
         saveExercise({
@@ -50,11 +56,11 @@ const Home = () => {
                 set: exercise.set,
                 reps: exercise.reps,
                 weight: exercise.weight,
-                rpe:exercise.rpe
+                rpe: exercise.rpe
             }
         }).then(res => {
             setLoading(false)
-
+            setExercise({ ...exercise, set: '', reps: '', weight: '', rpe: '' })
         }).catch(er => {
             setLoading(false)
 
@@ -88,7 +94,7 @@ const Home = () => {
             <div className='mt-2'></div>
             <Input name="set" setInput={setExercise} label="Set" placeholder={"2"} />
             <Input name="reps" setInput={setExercise} label="Reps" placeholder={"6"} />
-            <Input name="weight" setInput={setExercise} label="Weight - lbs" placeholder={"135"} />
+            <Input name="weight" setInput={setExercise} label={`Weight - lbs = ${weightInKg}`} placeholder={"135"} />
             <Input name="rpe" setInput={setExercise} label="RPE" placeholder={"7"} />
             <div className='mt-2'></div>
             <Button text={!loading ? 'Save' : "Please wait"} onClick={!loading && onSave} />

@@ -16,9 +16,11 @@ const Report = () => {
 
     const [filter, setFilter] = useState({ date: new Date().toISOString() })
 
+    const [refresh, setRefresh] = useState(0);
+
     const handleGetAllUserExercise = () => {
         setLoading(true)
-        getAllUserExercise(`user=${user?._id}&date=${filter.date}&populate=categoryid,exerciseid
+        getAllUserExercise(`user=${user?._id}&date=${refresh === 0 ? moment(filter.date).toISOString() : moment(filter.date).add(1, 'days').toISOString()}&populate=categoryid,exerciseid
         `).then(res => {
             let userExercise = res?.data?.data;
             setAllExercise(userExercise);
@@ -39,7 +41,10 @@ const Report = () => {
         </div>
         <div className='h-[2px] bg-gray-200 w-full mb-3'></div>
         <div className='mb-4 md:mb-10 md:my-5 w-full md:w-[800px]'>
-            <input type="date" className='border-2 border-orange-500 rounded py-2 px-3' value={moment(filter.date).format('DD-MM-YYYY')} onChange={e => setFilter({ ...filter, date: moment(e.target.value).add(1, 'days').toISOString() })} />
+            <input type="date"
+                className='border-2 border-orange-500 rounded py-2 px-3 font-bold text-orange-500'
+                value={moment(filter.date).format('YYYY-MM-DD')}
+                onChange={e => { setRefresh(refresh + 1); setFilter({ ...filter, date: moment(e.target.value).toISOString() }) }} />
         </div>
         <div>
             {

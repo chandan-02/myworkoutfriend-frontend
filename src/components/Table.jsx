@@ -1,5 +1,7 @@
 import moment from "moment/moment";
 import { ExclamationCircleIcon } from '@heroicons/react/24/solid'
+import { convertWeight } from '../utils/weightConverter';
+
 const Table = ({ heading, data }) => {
     return (
         <div className="overflow-x-auto gap-4 flex flex-col">
@@ -34,7 +36,7 @@ const Table = ({ heading, data }) => {
                                                         {itm?.reps}
                                                     </td>
                                                     <td className="px-6 py-4">
-                                                        {itm?.weight}
+                                                        {itm?.weight} lbs = {convertWeight(itm?.weight, 'kg')}
                                                     </td>
                                                     <td className="px-6 py-4">
                                                         {itm.rpe}
@@ -48,7 +50,7 @@ const Table = ({ heading, data }) => {
                             </table>
                         </div>
                     )
-                }) : <div><ExclamationCircleIcon className="text-orange-500"/><p className="text-base">No Data Found</p></div>
+                }) : <div><ExclamationCircleIcon className="text-orange-500" /><p className="text-base">No Data Found</p></div>
             }
 
         </div>
