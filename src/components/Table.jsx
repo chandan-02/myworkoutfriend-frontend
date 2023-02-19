@@ -16,6 +16,15 @@ const Table = ({ heading, data, weight, }) => {
             setLoading(false)
         })
     }
+
+    const cellPadding = (index) => {
+        if (index === 0) return `px-2`;
+        if (index === 1) return `px-2`;
+        if (index === 2) return `px-4`;
+        if (index === 3) return `px-2`;
+        if (index === 4) return `px-1`;
+    }
+
     return (
         <div className="overflow-x-auto gap-4 flex flex-col">
             {
@@ -31,7 +40,7 @@ const Table = ({ heading, data, weight, }) => {
                                 <thead className=" text-gray-700 uppercase bg-orange-500">
                                     <tr>
                                         {
-                                            ["Set", "Reps", "Weight", "RPE", "X"]?.map((itm, i) => <th key={i} scope="col" className="px-5 md:px-6 py-3 text-white">
+                                            ["Set", "Reps", "Weight", "RPE", "X"]?.map((itm, i) => <th key={i} scope="col" className={`${cellPadding(i)} md:px-6 py-3 text-white text-center`}>
                                                 {itm}
                                             </th>)
                                         }
@@ -42,19 +51,19 @@ const Table = ({ heading, data, weight, }) => {
                                         item?.details?.sort((r1, r2) => (r1.set > r2.set) ? 1 : (r1.set < r2.set) ? -1 : 0).map(itm => {
                                             return (
                                                 <tr key={itm?._id} className="bg-white border-b w-300px">
-                                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap text-center">
                                                         {itm?.set}
                                                     </th>
-                                                    <td className="px-6 py-4">
+                                                    <td className="px-6 py-4 text-center">
                                                         {itm?.reps}
                                                     </td>
-                                                    <td className="px-6 py-4">
+                                                    <td className="px-6 py-4 text-center">
                                                         {weight === 'lbs' ? itm?.weight + " lbs" : convertWeight(itm?.weight, 'kg')}
                                                     </td>
-                                                    <td className="px-6 py-4">
+                                                    <td className="px-6 py-4 text-center">
                                                         {itm?.rpe ? itm?.rpe : '-'}
                                                     </td>
-                                                    <td className="px-6 py-4">
+                                                    <td className="px-6 py-4 text-center">
                                                         {
                                                             !loading ?
                                                                 <TrashIcon className="text-red-500 h-5" onClick={() => handleDeleteSet(item?._id, itm?._id)} />
