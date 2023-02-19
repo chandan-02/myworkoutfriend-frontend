@@ -77,7 +77,7 @@ const Home = () => {
             <h1 className="text-xl font-bold">Actions</h1>
             <div className='flex flex-row gap-4'>
                 <Button text="See Report" type='outline' onClick={() => history.push('/app/report')} />
-                <Button text="Enter Exercise" />
+                <Button text="Add Workout" onClick={() => history.push('/app/manage-workout')} />
                 <Button text="Logout" onClick={() => {
                     localStorage.removeItem('user');
                     localStorage.removeItem('token');

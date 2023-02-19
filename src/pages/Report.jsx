@@ -37,7 +37,7 @@ const Report = () => {
     }, [filter.date])
 
     return (
-        <div className='m-4 md:md-10 flex justify-center items-center flex-col'>
+        <div className='m-4 md:mb-10 flex justify-center items-center flex-col'>
             <div className='mb-4 md:mb-10 md:my-5 w-full md:w-[800px]'>
                 <h1 className="text-2xl font-bold flex flex-row gap-2 items-center"><ArrowLeftIcon className='h-7 text-orange-500 cursor-pointer' onClick={() => history.push('/app/home')} /> Report for {user?.fullname}</h1>
             </div>
