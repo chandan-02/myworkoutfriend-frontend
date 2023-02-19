@@ -80,11 +80,11 @@ const WorkoutManagement = () => {
                         <Input name="name" placeholder={"Chest"} setInput={setCategory}/>
                         <Button text={!loading ? 'Add Category' : "Please wait"} onClick={!loading && onAddCategory} />
                     </div>
-                    <div className='flex flex-col gap-4'>
+                    {/* <div className='flex flex-col gap-4'>
                         <h1 className="text-lg font-bold">Delete Category</h1>
                         <DropdownDefault default1={"Select Category"} data={allCategory}/>
                         <Button text='Delete'/>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='flex gap-20'>
                     <div className='flex flex-col gap-4'>
@@ -93,12 +93,12 @@ const WorkoutManagement = () => {
                         <Input name="name" setInput={setExercise} placeholder={"BB Row"} />
                         <Button text={!loading ? 'Add Exercise' : "Please wait"} onClick={!loading && onAddExercise} />
                     </div>
-                    <div className='flex flex-col gap-4'>
+                    {/* <div className='flex flex-col gap-4'>
                         <h1 className="text-lg font-bold">Delete Exercise</h1>
                         <DropdownDefault default1={"Select Category"} data={allCategory} setInput={setQuery} input={"categoryid"} />
                         <Dropdown default1={"Select Exercise"} data={allExercise} />
                         <Button text='Delete Exercise' />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
