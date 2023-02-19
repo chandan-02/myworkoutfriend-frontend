@@ -36,6 +36,45 @@ const getAllExercise = async (query) => {
     })
 };
 
+const addNewExercise = async (exerciseData) => {
+    return new Promise(function (resolve, reject) {
+        Axios.post("/admin/exercise", exerciseData).then((res) => {
+            Toast({
+                message: 'Exercise Added!',
+                type: 'success'
+            });
+            if (!res.data.success) {
+                Toast({
+                    message: res.data.message,
+                    type: 'error'
+                });
+                reject({
+                    data: res.data,
+                    other: res,
+                    success: false
+                });
+            };
+            resolve({
+                data: res.data,
+                other: res,
+                success: true
+            });
+        }).catch((err) => {
+            if (err.response?.data) {
+                Toast({
+                    message: `Error Adding Exercise` ?? err.response.data.message,
+                    type: 'error'
+                });
+            };
+            reject({
+                data: err.response?.data,
+                other: err,
+                success: false
+            });
+        })
+    })
+};
+
 // User exercise related apis
 const saveExercise = async (data) => {
     return new Promise(function (resolve, reject) {
@@ -52,7 +91,7 @@ const saveExercise = async (data) => {
                 });
             };
             Toast({
-                message: "Exercise saved !",
+                message: "Exercise Saved!",
                 type: 'success'
             });
             resolve({
@@ -63,7 +102,7 @@ const saveExercise = async (data) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from Save exercise` ?? err.response.data.message,
+                    message: `Couldn't Save Exercise` ?? err.response.data.message,
                     type: 'error'
                 });
             };
@@ -97,7 +136,7 @@ const getAllUserExercise = async (query) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from Get all user exercise` ?? err.response.data.message,
+                    message: `Couldn't Get User Report` ?? err.response.data.message,
                     type: 'error'
                 });
             };
@@ -136,7 +175,7 @@ const DeleteASet = async (data) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from Get all user exercise` ?? err.response.data.message,
+                    message: `Couldn't Delete Set` ?? err.response.data.message,
                     type: 'error'
                 });
             };
@@ -150,6 +189,7 @@ const DeleteASet = async (data) => {
 };
 export {
     getAllExercise,
+    addNewExercise,
     saveExercise,
     getAllUserExercise,
     DeleteASet
