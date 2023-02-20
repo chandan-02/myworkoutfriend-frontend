@@ -17,8 +17,8 @@ const WorkoutManagement = () => {
     const [allCategory, setAllCategory] = useState([{ name: 'Loading...' }])
     const [allExercise, setAllExercise] = useState([{ name: 'loading...' }]);
     const [query, setQuery] = useState({ categoryid: '63edb23fe8ce97542cb54fc0' })
-    const [category, setCategory] = useState({name:""});
-    const [exercise, setExercise] = useState({ categoryid: '', name: ''});
+    const [category, setCategory] = useState({ name: "" });
+    const [exercise, setExercise] = useState({ categoryid: '', name: '' });
     const [loading, setLoading] = useState(false)
 
     const getCategory = () => {
@@ -56,10 +56,8 @@ const WorkoutManagement = () => {
 
     const onAddExercise = () => {
         setLoading(true)
-        addNewExercise({
-            name: exercise.name,
-            categoryid: exercise.categoryid,
-        }).then(res => {
+        console.log(exercise)
+        addNewExercise(exercise).then(res => {
             setLoading(false)
             setExercise({ ...exercise, name: '' })
         }).catch(er => {
@@ -77,7 +75,7 @@ const WorkoutManagement = () => {
                 <div className='flex gap-20'>
                     <div className='flex flex-col gap-4'>
                         <h1 className="text-lg font-bold">Add New Category</h1>
-                        <Input name="name" placeholder={"Chest"} setInput={setCategory}/>
+                        <Input name="name" placeholder={"Chest"} setInput={setCategory} />
                         <Button text={!loading ? 'Add Category' : "Please wait"} onClick={!loading && onAddCategory} />
                     </div>
                     {/* <div className='flex flex-col gap-4'>
@@ -89,7 +87,7 @@ const WorkoutManagement = () => {
                 <div className='flex gap-20'>
                     <div className='flex flex-col gap-4'>
                         <h1 className="text-lg font-bold">Add New Exercise</h1>
-                        <DropdownDefault default1={"Select Category"} data={allCategory} setInput={setExercise}/>
+                        <DropdownDefault default1={"Select Category"} data={allCategory} setInput={setExercise} input="categoryid" />
                         <Input name="name" setInput={setExercise} placeholder={"BB Row"} />
                         <Button text={!loading ? 'Add Exercise' : "Please wait"} onClick={!loading && onAddExercise} />
                     </div>
