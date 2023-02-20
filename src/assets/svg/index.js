@@ -28,9 +28,11 @@ import { ReactComponent as OutlinePersonIcon } from './outlinePerson.svg'
 import { ReactComponent as OutlineCogIcon } from './outlineCog.svg'
 import { ReactComponent as OutlineLogoutIcon } from './outlineLogout.svg'
 import { ReactComponent as Logo } from './logo.svg'
+import { ReactComponent as LogoNoBG } from './logoNoBg.svg'
 
 export {
   Logo,
+  LogoNoBG,
   ButtonsIcon,
   CardsIcon,
   ChartsIcon,

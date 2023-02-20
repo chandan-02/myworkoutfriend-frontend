@@ -36,7 +36,7 @@ function Login() {
         </Link>
         <Button text={!loading ? 'Login' : "Please Wait"} onClick={handleLogin} />
         <Link to='/auth/register'>
-          <p className='text-base cursor-pointer text-center text-orange-500 hover:underline'>Don't have an account? Create one.</p>
+          <p className='text-base cursor-pointer text-center hover:underline'>Don't have an account? <span className='text-orange-500 '>Create one.</span></p>
         </Link>
       </div>
     </div>
