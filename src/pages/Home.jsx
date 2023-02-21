@@ -69,22 +69,8 @@ const Home = () => {
 
 
 
-    return (<div className="flex flex-col gap-2 justify-center items-center mt-5">
-        <p className="text-base text-orange-500">{moment().format('DD MMM YYYY')}</p>
-        <h1 className="text-2xl font-bold">Welcome, {user?.fullname}</h1>
-        {/* temp */}
-        <div className='flex flex-col w-full px-2 md:w-[500px] gap-2 mt-5'>
-            <h1 className="text-xl font-bold">Actions</h1>
-            <div className='flex flex-row gap-4'>
-                <Button text="See Report" type='outline' onClick={() => history.push('/app/report')} />
-                <Button text="Add Workout" onClick={() => history.push('/app/manage-workout')} />
-                <Button text="Logout" onClick={() => {
-                    localStorage.removeItem('user');
-                    localStorage.removeItem('token');
-                    history.push('/auth/login');
-                }} />
-            </div>
-        </div>
+    return (
+    <div className="flex flex-col gap-2 justify-center items-center">
         <div className='h-[2px] bg-gray-200 w-full mt-4'></div>
         <div className='flex flex-col w-full px-2 md:w-[500px] gap-2 mt-5'>
             <div className='flex flex-row gap-2'>

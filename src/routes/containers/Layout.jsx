@@ -6,9 +6,11 @@ import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 import routes from '../index'
 
 import Page404 from '../../pages/404';
+import Sidebar from '../../components/Layout/Sidebar';
+import Header from '../../components/Layout/Header';
 
 function Layout() {
-  // const { isSidebarOpen, closeSidebar } = useContext(SidebarContext)
+  // const [sidebarOpen, setSidebarOpen] = useEffect(true);
   // let location = useLocation()
 
   // useEffect(() => {
@@ -21,9 +23,10 @@ function Layout() {
       className={`flex min-h-screen bg-gray-50`}
     >
       {/* <Sidebar /> */}
-
+      <Sidebar/>
       <div className="flex flex-col flex-1 w-full">
         {/* <Header /> */}
+        <Header/>
         <Switch>
           {routes.map((route, i) => {
             return route.component ? (
