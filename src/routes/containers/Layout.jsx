@@ -1,4 +1,4 @@
-import React, { useContext, Suspense, useEffect, lazy } from 'react'
+import React, { useContext, Suspense, useState, lazy } from 'react'
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom'
 
 // import { SidebarContext } from '../../context/SidebarContext'
@@ -10,7 +10,7 @@ import Sidebar from '../../components/Layout/Sidebar';
 import Header from '../../components/Layout/Header';
 
 function Layout() {
-  // const [sidebarOpen, setSidebarOpen] = useEffect(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   // let location = useLocation()
 
   // useEffect(() => {
@@ -23,10 +23,10 @@ function Layout() {
       className={`flex min-h-screen bg-gray-50`}
     >
       {/* <Sidebar /> */}
-      <Sidebar/>
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <div className="flex flex-col flex-1 w-full">
         {/* <Header /> */}
-        <Header/>
+        <Header sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <Switch>
           {routes.map((route, i) => {
             return route.component ? (

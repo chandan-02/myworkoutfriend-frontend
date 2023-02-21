@@ -10,6 +10,7 @@ import { getAllExercise, saveExercise } from '../api/exercise';
 import { getAllUserCategory } from '../api/categories';
 import { useHistory } from 'react-router-dom';
 import { convertWeight } from '../utils/weightConverter';
+import { validationCheck } from '../utils/validationCheck';
 
 const Home = () => {
     const history = useHistory();
@@ -48,30 +49,29 @@ const Home = () => {
 
     const onSave = () => {
         setLoading(true)
-        saveExercise({
-            exerciseid: exercise.exerciseid,
-            categoryid: exercise.categoryid,
-            user: user?._id,
-            details: {
-                set: exercise.set,
-                reps: exercise.reps,
-                weight: exercise.weight,
-                rpe: exercise.rpe
-            }
-        }).then(res => {
-            setLoading(false)
-            setExercise({ ...exercise, set: '', reps: '', weight: '', rpe: '' })
-        }).catch(er => {
-            setLoading(false)
-
-        })
+        // validationCheck({...exercise})
+        if(validationCheck({...exercise}).status){
+            saveExercise({
+                exerciseid: exercise.exerciseid,
+                categoryid: exercise.categoryid,
+                user: user?._id,
+                details: {
+                    set: exercise.set,
+                    reps: exercise.reps,
+                    weight: exercise.weight,
+                    rpe: exercise.rpe
+                }
+            }).then(res => {
+                setLoading(false)
+                setExercise({ ...exercise, set: '', reps: '', weight: '', rpe: '' })
+            }).catch(er => {
+                setLoading(false)
+            })
+        }else{setLoading(false)}
     }
-
-
 
     return (
     <div className="flex flex-col gap-2 justify-center items-center">
-        <div className='h-[2px] bg-gray-200 w-full mt-4'></div>
         <div className='flex flex-col w-full px-2 md:w-[500px] gap-2 mt-5'>
             <div className='flex flex-row gap-2'>
                 <DropdownDefault default1={"Select Category"} data={allCategory} setInput={setQuery} input={"categoryid"} />
