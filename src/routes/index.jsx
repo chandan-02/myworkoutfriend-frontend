@@ -2,6 +2,7 @@
 import Home from '../pages/Home';
 import Report from '../pages/Report';
 import ManageWorkout from '../pages/WorkoutManagement';
+import ManageCategory from '../pages/ManageCategory';
 const routes = [
   {
     path: '/home',
@@ -14,6 +15,10 @@ const routes = [
   {
     path: '/manage-workout',
     component: ManageWorkout,
+  },
+  {
+    path: '/manage-category',
+    component: ManageCategory,
   },
 ]
 
