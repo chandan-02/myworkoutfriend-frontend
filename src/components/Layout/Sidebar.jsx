@@ -9,7 +9,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
 
     return (
         <div>
-            <aside className={`fixed md:static flex flex-col w-64 h-full px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 ${sidebarOpen ? "w-min-w" : "w-[0px] px-0"} transition-all duration-300`}>
+            <aside className={`fixed md:static flex flex-col w-64 h-full px-4 py-8 overflow-y-auto bg-white border-r rtl:border-r-0 rtl:border-l dark:bg-gray-900 dark:border-gray-700 ${sidebarOpen ? "w-min-w" : "w-[0px] px-[0px]"} transition-all duration-300`}>
                 <div className='flex justify-between items-center'>
                     <LogoNoBG className={`h-16 w-16`} />
                     <h1 className='dark:text-white cursor-pointer' onClick={() => { setSidebarOpen(false) }} >X</h1>

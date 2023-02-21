@@ -11,14 +11,14 @@ function Header({ sidebarOpen, setSidebarOpen }) {
 
     return (
         <div className=''>
-            <div className='flex justify-between items-center h-[6rem] gap-4 mx-5 pb-2'>
+            <div className={`flex ${sidebarOpen ? "justify-end" : "justify-between"} items-center h-[6rem] gap-4 mx-5 pb-2`}>
                 <div className={`${sidebarOpen ? "hidden" : "block"}`} onClick={() => { setSidebarOpen(true) }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
                 </div>
 
-                <LogoNoBG className={`h-12 w-auto}`} />
+                <LogoNoBG className={`h-12 w-auto} ${sidebarOpen ? "hidden" : "block"}`} />
 
                 <img className="object-cover mx-2 rounded-full h-9 w-9" src="https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="avatar" />
 
