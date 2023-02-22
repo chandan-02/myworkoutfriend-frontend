@@ -78,10 +78,10 @@ const Home = () => {
                 <Dropdown default1={"Select Exercise"} data={allExercise} setInput={setExercise} />
             </div>
             <div className='mt-2'></div>
-            <Input name="set" setInput={setExercise} label="Set" placeholder={"2"} />
-            <Input name="reps" setInput={setExercise} label="Reps" placeholder={"6"} />
-            <Input name="weight" setInput={setExercise} label={`Weight - lbs = ${weightInKg}`} placeholder={"135"} />
-            <Input name="rpe" setInput={setExercise} label="RPE" placeholder={"7"} />
+            <Input name="set" value={exercise.set} setInput={setExercise} label="Set" placeholder={"2"} />
+            <Input name="reps" value={exercise.reps} setInput={setExercise} label="Reps" placeholder={"6"} />
+            <Input name="weight" value={exercise.weight} setInput={setExercise} label={`Weight - lbs = ${weightInKg}`} placeholder={"135"} />
+            <Input name="rpe" value={exercise.rpe} setInput={setExercise} label="RPE" placeholder={"7"} />
             <div className='mt-2'></div>
             <Button text={!loading ? 'Save' : "Please wait"} onClick={!loading && onSave} />
         </div>

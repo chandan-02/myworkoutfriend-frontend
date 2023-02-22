@@ -18,10 +18,10 @@ const Table = ({ heading, data, weight, }) => {
     }
 
     const cellPadding = (index) => {
-        if (index === 0) return `px-2`;
-        if (index === 1) return `px-2`;
+        if (index === 0) return `px-1`;
+        if (index === 1) return `px-1`;
         if (index === 2) return `px-4`;
-        if (index === 3) return `px-2`;
+        if (index === 3) return `px-1`;
         if (index === 4) return `px-1`;
     }
 
