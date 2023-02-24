@@ -23,7 +23,7 @@ const getAllExercise = async (query) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from Get all exercise` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Error from Get all exercise`,
                     type: 'error'
                 });
             };
@@ -62,7 +62,7 @@ const addNewExercise = async (exerciseData) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error Adding Exercise` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Error Adding Exercise`,
                     type: 'error'
                 });
             };
@@ -102,7 +102,7 @@ const saveExercise = async (data) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Couldn't Save Exercise` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Couldn't Save Exercise`,
                     type: 'error'
                 });
             };
@@ -136,7 +136,7 @@ const getAllUserExercise = async (query) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Couldn't Get User Report` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Couldn't Get User Report`,
                     type: 'error'
                 });
             };
@@ -175,7 +175,7 @@ const DeleteASet = async (data) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Couldn't Delete Set` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Couldn't Delete Set`,
                     type: 'error'
                 });
             };

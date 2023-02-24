@@ -23,7 +23,7 @@ const getAllUserCategory = async (query) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from Get all Category` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Error from Get all Category`,
                     type: 'error'
                 });
             };
@@ -62,7 +62,7 @@ const addNewCategory = async (category) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error Adding Category` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Error Adding Category`,
                     type: 'error'
                 });
             };
@@ -76,7 +76,47 @@ const addNewCategory = async (category) => {
 };
 
 
+const deleteUserCategory = async (id) => {
+    return new Promise(function (resolve, reject) {
+        Axios.delete(`/admin/category/${id}`,).then((res) => {
+            Toast({
+                message: 'Category Deleted!',
+                type: 'success'
+            });
+            if (!res.data.success) {
+                Toast({
+                    message: res.data.message,
+                    type: 'error'
+                });
+                reject({
+                    data: res.data,
+                    other: res,
+                    success: false
+                });
+            };
+            resolve({
+                data: res.data,
+                other: res,
+                success: true
+            });
+        }).catch((err) => {
+            if (err.response?.data) {
+                Toast({
+                    message: err.response.data.message ?? `Error Deleting Category`,
+                    type: 'error'
+                });
+            };
+            reject({
+                data: err.response?.data,
+                other: err,
+                success: false
+            });
+        })
+    })
+};
+
 export {
     getAllUserCategory,
     addNewCategory,
+    deleteUserCategory
 }

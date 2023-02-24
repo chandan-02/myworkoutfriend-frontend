@@ -3,6 +3,8 @@ import Home from '../pages/Home';
 import Report from '../pages/Report';
 import ManageWorkout from '../pages/WorkoutManagement';
 import ManageCategory from '../pages/ManageCategory';
+import PlanWorkout from '../pages/PlanWorkout';
+
 const routes = [
   {
     path: '/home',
@@ -19,6 +21,11 @@ const routes = [
   {
     path: '/manage-category',
     component: ManageCategory,
+  },
+  ,
+  {
+    path: '/plan-workout',
+    component: PlanWorkout,
   },
 ]
 

@@ -23,7 +23,7 @@ const login = async (userData) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from login` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Error from login`,
                     type: 'error'
                 });
             };
@@ -63,7 +63,7 @@ const Register = async (userData) => {
         }).catch((err) => {
             if (err.response?.data) {
                 Toast({
-                    message: `Error from Register` ?? err.response.data.message,
+                    message: err.response.data.message ?? `Error from Register`,
                     type: 'error'
                 });
             };
