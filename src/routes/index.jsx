@@ -6,6 +6,7 @@ import ManageCategory from '../pages/ManageCategory';
 import PlanWorkout from '../pages/PlanWorkout';
 
 const routes = [
+  
   {
     path: '/home',
     component: Home,
